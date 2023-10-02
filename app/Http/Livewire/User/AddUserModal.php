@@ -20,6 +20,7 @@ class AddUserModal extends Component
     public $role;
     public $avatar;
     public $saved_avatar;
+    public $password;
 
     public $edit_mode = false;
 
@@ -27,6 +28,7 @@ class AddUserModal extends Component
         'name' => 'required|string',
         'email' => 'required|email',
         'role' => 'required|string',
+        'password' => 'required|string|min:8',
         'avatar' => 'nullable|sometimes|image|max:1024',
     ];
 
@@ -72,7 +74,7 @@ class AddUserModal extends Component
             }
 
             if (!$this->edit_mode) {
-                $data['password'] = Hash::make($this->email);
+                $data['password'] = Hash::make($this->password);
             }
 
             // Create a new user record in the database
