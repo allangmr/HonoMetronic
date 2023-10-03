@@ -5,22 +5,22 @@
 		<!--begin::Menu-->
 		<div class="menu menu-column menu-rounded menu-sub-indention px-3 fw-semibold fs-6" id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false">
 			<!--begin:Menu item-->
-			<div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ request()->routeIs('dashboard') ? 'here show' : '' }}">
+			<div class="menu-item menu-accordion">
 				<!--begin:Menu link-->
-				<span class="menu-link">
+				<a href="{{ route('dashboard') }}" class="menu-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
 					<span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
-					<span class="menu-title">Resumen</span>
-				</span>
+					<span class="menu-title">Dashboard</span>
+				</a>
 				<!--end:Menu link-->
 			</div>
 			<!--end:Menu item-->
 			<!--begin:Menu item-->
-			<div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ request()->routeIs('dashboard') ? 'here show' : '' }}">
+			<div class="menu-item menu-accordion">
 				<!--begin:Menu link-->
-				<span class="menu-link">
+				<a href="{{ route('patients.index') }}" class="menu-link {{ request()->routeIs('patients.*') ? 'active' : '' }}">
 					<span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
 					<span class="menu-title">Pacientes</span>
-				</span>
+				</a>
 				<!--end:Menu link-->
 			</div>
 			<!--end:Menu item-->
@@ -40,6 +40,16 @@
 				<span class="menu-link">
 					<span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
 					<span class="menu-title">Procedimientos</span>
+				</span>
+				<!--end:Menu link-->
+			</div>
+			<!--end:Menu item-->
+			<!--begin:Menu item-->
+			<div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ request()->routeIs('dashboard') ? 'here show' : '' }}">
+				<!--begin:Menu link-->
+				<span class="menu-link">
+					<span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
+					<span class="menu-title">Doctores</span>
 				</span>
 				<!--end:Menu link-->
 			</div>
