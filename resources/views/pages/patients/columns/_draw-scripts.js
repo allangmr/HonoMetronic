@@ -7,11 +7,11 @@ document
     .forEach(function (element) {
         element.addEventListener("click", function () {
             Swal.fire({
-                text: "Are you sure you want to remove?",
+                text: "Esta seguro que desea eliminar este Paciente?",
                 icon: "warning",
                 buttonsStyling: false,
                 showCancelButton: true,
-                confirmButtonText: "Yes",
+                confirmButtonText: "Si",
                 cancelButtonText: "No",
                 customClass: {
                     confirmButton: "btn btn-danger",
@@ -37,6 +37,15 @@ document
                 "update_patient",
                 this.getAttribute("data-kt-patient-id")
             );
+        });
+    });
+
+// Add click event listener to update buttons
+document
+    .querySelectorAll('[data-kt-action="create_row"]')
+    .forEach(function (element) {
+        element.addEventListener("click", function () {
+            Livewire.emit("create_patient");
         });
     });
 

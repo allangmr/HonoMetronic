@@ -20,21 +20,33 @@ class AddPatientModal extends Component
 
     public $edit_mode = false;
 
+    public $pageTitle; // New property to store the page title
+
+    public $submitButtonTitle; // New property to store the page title
+
     protected $rules = [
         'name' => 'required|string',
         'dni' => 'string',
-        'age' => 'number',
+        'age' => 'numeric',
         'born_date' => 'date',
         'insurance_companies' => 'string',
         'email' => 'email',
         'phone' => 'string',
-        'address' => 'address'
+        'address' => 'string'
     ];
 
     protected $listeners = [
         'delete_patient' => 'deletePatient',
+        'create_patient' => 'createPatient',
         'update_patient' => 'updatePatient',
     ];
+
+    public function render()
+    {
+        return view('livewire.patient.add-patient-modal');
+    }
+
+
 
     public function submit()
     {
@@ -45,50 +57,62 @@ class AddPatientModal extends Component
             // Prepare the data for creating a new patient
             $data = [
                 'name' => $this->name,
-                'dni' => $this->dni,
                 'age' => $this->age,
                 'born_date' => $this->born_date,
                 'insurance_companies' => $this->insurance_companies,
-                'email' => $this->email,
                 'phone' => $this->phone,
-                'address' => $this->address
+                'address' => $this->address,
+                'email' => $this->email,
             ];
 
-            // Create a new patient record in the database
-            $patient = Patient::updateOrCreate($data);
+            $existingPatient = Patient::where('dni', $this->dni)->first();
+
+            if ($existingPatient) {
+                $existingPatient->update($data);
+                // Handle the case where a patient with the same dni already exists
+                // You might want to show an error message or take a different action
+            } else {
+                // Continue with updateOrCreate logic
+                $patient = Patient::updateOrCreate([
+                    'dni' => $this->dni
+                ], $data);
+            }
 
             if ($this->edit_mode) {
                 // Emit a success event with a message
-                $this->emit('success', __('Patient updated'));
+                $this->emit('success', __('Paciente Actualizado'));
             } else {
-
                 // Emit a success event with a message
-                $this->emit('success', __('New Patient created'));
+                $this->emit('success', __('Paciente Creado de forma correcta'));
             }
         });
 
         // Reset the form fields after successful submission
         $this->reset();
     }
-
-    public function deleteUser($id)
+    public function createPatient()
     {
-        // Prevent deletion of current user
-        if ($id == Patient::id()) {
-            $this->emit('error', 'Patient cannot be deleted');
-            return;
-        }
+        $this->reset();
+        $this->pageTitle =  __('Crear Paciente');
+        $this->submitButtonTitle =  __('Crear');
+        $this->edit_mode = false;
+    }
+
+    public function deletePatient($id)
+    {
 
         // Delete the user record with the specified ID
         Patient::destroy($id);
 
         // Emit a success event with a message
-        $this->emit('success', 'Patient successfully deleted');
+        $this->emit('success', 'Paciente Eliminado Correctamente');
     }
 
     public function updatePatient($id)
     {
         $this->edit_mode = true;
+        $this->pageTitle =  __('Editar Paciente');
+        $this->submitButtonTitle =  __('Editar');
 
         $patient = Patient::find($id);
 

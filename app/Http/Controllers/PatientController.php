@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\DataTables\PatientsDataTable;
+use App\DataTables\ClaimsAssignedPatientDatatable;
 use App\Models\Patient; // Change Paciente to Patient
 use Illuminate\Http\Request;
 
@@ -33,9 +35,10 @@ class PatientController extends Controller // Change PacientesController to Pati
         return redirect()->route('pages.patients.show', $patient->id); // Change pacientes.show to patients.show
     }
 
-    public function show(Patient $patient) // Change Paciente to Patient
+    public function show(Patient $patient, ClaimsAssignedPatientDatatable $dataTable)
     {
-        return view('pages.patients.show', compact('patient')); // Change pacientes.show to patients.show
+        return $dataTable->with('patient', $patient)
+            ->render('pages.patients.show', compact('patient'));
     }
 
     public function edit(Patient $patient) // Change Paciente to Patient

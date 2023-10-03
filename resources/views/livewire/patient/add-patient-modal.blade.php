@@ -6,7 +6,7 @@
             <!--begin::Modal header-->
             <div class="modal-header" id="kt_modal_add_patient_header">
                 <!--begin::Modal title-->
-                <h2 class="fw-bold">Crear Paciente</h2>
+                <h2 class="fw-bold">{{$pageTitle}}</h2>
                 <!--end::Modal title-->
                 <!--begin::Close-->
                 <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal" aria-label="Close">
@@ -39,7 +39,11 @@
                             <label class="required fw-semibold fs-6 mb-2">Cedula</label>
                             <!--end::Label-->
                             <!--begin::Input-->
+                            @if($dni)
+                            <input type="text" wire:model.defer="dni" name="dni" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Cedula" disabled />
+                            @else
                             <input type="text" wire:model.defer="dni" name="dni" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Cedula" />
+                            @endif
                             <!--end::Input-->
                             @error('dni')
                             <span class="text-danger">{{ $message }}</span> @enderror
@@ -63,7 +67,7 @@
                             <label class="required fw-semibold fs-6 mb-2">Fecha de Nacimiento</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" wire:model.defer="born_date" name="born_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Fecha de Nacimiento" />
+                            <input type="date" wire:model.defer="born_date" name="born_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Fecha de Nacimiento" />
                             <!--end::Input-->
                             @error('born_date')
                             <span class="text-danger">{{ $message }}</span> @enderror
@@ -99,7 +103,7 @@
                             <label class="required fw-semibold fs-6 mb-2">Telefono</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="number" wire:model.defer="phone" name="phone" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Telefono" />
+                            <input type="text" wire:model.defer="phone" name="phone" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Telefono" />
                             <!--end::Input-->
                             @error('phone')
                             <span class="text-danger">{{ $message }}</span> @enderror
@@ -123,7 +127,7 @@
                     <div class="text-center pt-15">
                         <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal" aria-label="Close" wire:loading.attr="disabled">Descartar</button>
                         <button type="submit" class="btn btn-primary" data-kt-patients-modal-action="submit">
-                            <span class="indicator-label" wire:loading.remove>Crear</span>
+                            <span class="indicator-label" wire:loading.remove>{{$submitButtonTitle}}</span>
                             <span class="indicator-progress" wire:loading wire:target="submit">
                                 Procesando...
                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
