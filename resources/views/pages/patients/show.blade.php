@@ -190,17 +190,6 @@
         <!--end::Content-->
     </div>
     <!--end::Layout-->
-    <!--begin::Modals-->
-    <!--begin::Modal - Update user details-->
-    @include('pages.patients/modals/_update-details')
-    <!--end::Modal - Update user details-->
-    <!--begin::Modal - Add schedule-->
-    @include('pages.patients/modals/_add-schedule')
-    <!--end::Modal - Add schedule-->
-    <!--begin::Modal - Add task-->
-    @include('pages.patients/modals/_add-task')
-    <!--end::Modal - Add task-->
-    <!--end::Modals-->
 
     @push('scripts')
     {{ $dataTable->scripts() }}
