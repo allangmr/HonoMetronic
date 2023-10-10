@@ -6,6 +6,7 @@ use App\Http\Controllers\Apps\UserManagementController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ProcedureController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,12 +29,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Use resourceful controller for patients
     Route::resource('/patients', PatientController::class);
 
+    Route::resource('procedures', ProcedureController::class);
+
     Route::name('user-management.')->group(function () {
         Route::resource('/user-management/users', UserManagementController::class);
         Route::resource('/user-management/roles', RoleManagementController::class);
         Route::resource('/user-management/permissions', PermissionManagementController::class);
     });
-
 });
 
 Route::get('/error', function () {

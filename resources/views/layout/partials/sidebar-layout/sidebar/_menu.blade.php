@@ -35,12 +35,12 @@
 			</div>
 			<!--end:Menu item-->
 			<!--begin:Menu item-->
-			<div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ request()->routeIs('dashboard') ? 'here show' : '' }}">
+			<div class="menu-item menu-accordion">
 				<!--begin:Menu link-->
-				<span class="menu-link">
+				<a href="{{ route('procedures.index') }}" class="menu-link {{ request()->routeIs('procedures.*') ? 'active' : '' }}">
 					<span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
 					<span class="menu-title">Procedimientos</span>
-				</span>
+				</a>
 				<!--end:Menu link-->
 			</div>
 			<!--end:Menu item-->
