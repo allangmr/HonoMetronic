@@ -29,11 +29,11 @@
                             <!--begin::Image placeholder-->
                             <style>
                                 .image-input-placeholder {
-                                    background-image: url('{{ image('svg/files/blank-image.svg') }}');
+                                    background-image: url('{{ image(' svg/files/blank-image.svg') }}');
                                 }
 
                                 [data-bs-theme="dark"] .image-input-placeholder {
-                                    background-image: url('{{ image('svg/files/blank-image-dark.svg') }}');
+                                    background-image: url('{{ image(' svg/files/blank-image-dark.svg') }}');
                                 }
                             </style>
                             <!--end::Image placeholder-->
@@ -41,17 +41,17 @@
                             <div class="image-input image-input-outline image-input-placeholder {{ $avatar || $saved_avatar ? '' : 'image-input-empty' }}" data-kt-image-input="true">
                                 <!--begin::Preview existing avatar-->
                                 @if($avatar)
-                                    <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $avatar ? $avatar->temporaryUrl() : '' }});"></div>
+                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $avatar ? $avatar->temporaryUrl() : '' }});"></div>
                                 @else
-                                    <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $saved_avatar }});"></div>
+                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $saved_avatar }});"></div>
                                 @endif
                                 <!--end::Preview existing avatar-->
                                 <!--begin::Label-->
                                 <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                     {!! getIcon('pencil','fs-7') !!}
                                     <!--begin::Inputs-->
-                                    <input type="file" wire:model.defer="avatar" name="avatar" accept=".png, .jpg, .jpeg"/>
-                                    <input type="hidden" name="avatar_remove"/>
+                                    <input type="file" wire:model.defer="avatar" name="avatar" accept=".png, .jpg, .jpeg" />
+                                    <input type="hidden" name="avatar_remove" />
                                     <!--end::Inputs-->
                                 </label>
                                 <!--end::Label-->
@@ -80,7 +80,7 @@
                             <label class="required fw-semibold fs-6 mb-2">Nombre</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" wire:model.defer="name" name="name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Nombre"/>
+                            <input type="text" wire:model.defer="name" name="name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Nombre" />
                             <!--end::Input-->
                             @error('name')
                             <span class="text-danger">{{ $message }}</span> @enderror
@@ -92,7 +92,7 @@
                             <label class="required fw-semibold fs-6 mb-2">Correo</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="email" wire:model.defer="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="correo@correo.com"/>
+                            <input type="email" wire:model.defer="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="correo@correo.com" />
                             <!--end::Input-->
                             @error('email')
                             <span class="text-danger">{{ $message }}</span> @enderror
@@ -104,7 +104,7 @@
                             <label class="required fw-semibold fs-6 mb-2">Clave</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="password" wire:model.defer="password" name="password" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Clave"/>
+                            <input type="password" wire:model.defer="password" name="password" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Clave" />
                             <!--end::Input-->
                             @error('password')
                             <span class="text-danger">{{ $message }}</span> @enderror
@@ -119,30 +119,30 @@
                             <span class="text-danger">{{ $message }}</span> @enderror
                             <!--begin::Roles-->
                             @foreach($roles as $role)
-                                <!--begin::Input row-->
-                                <div class="d-flex fv-row">
-                                    <!--begin::Radio-->
-                                    <div class="form-check form-check-custom form-check-solid">
-                                        <!--begin::Input-->
-                                        <input class="form-check-input me-3" id="kt_modal_update_role_option_{{ $role->id }}" wire:model.defer="role" name="role" type="radio" value="{{ $role->name }}" checked="checked"/>
-                                        <!--end::Input-->
-                                        <!--begin::Label-->
-                                        <label class="form-check-label" for="kt_modal_update_role_option_{{ $role->id }}">
-                                            <div class="fw-bold text-gray-800">
-                                                {{ ucwords($role->name) }}
-                                            </div>
-                                            <div class="text-gray-600">
-                                                {{ $role->description }}
-                                            </div>
-                                        </label>
-                                        <!--end::Label-->
-                                    </div>
-                                    <!--end::Radio-->
+                            <!--begin::Input row-->
+                            <div class="d-flex fv-row">
+                                <!--begin::Radio-->
+                                <div class="form-check form-check-custom form-check-solid">
+                                    <!--begin::Input-->
+                                    <input class="form-check-input me-3" id="kt_modal_update_role_option_{{ $role->id }}" wire:model.defer="role" name="role" type="radio" value="{{ $role->name }}" checked="checked" />
+                                    <!--end::Input-->
+                                    <!--begin::Label-->
+                                    <label class="form-check-label" for="kt_modal_update_role_option_{{ $role->id }}">
+                                        <div class="fw-bold text-gray-800">
+                                            {{ ucwords($role->name) }}
+                                        </div>
+                                        <div class="text-gray-600">
+                                            {{ $role->description }}
+                                        </div>
+                                    </label>
+                                    <!--end::Label-->
                                 </div>
-                                <!--end::Input row-->
-                                @if(!$loop->last)
-                                    <div class='separator separator-dashed my-5'></div>
-                                @endif
+                                <!--end::Radio-->
+                            </div>
+                            <!--end::Input row-->
+                            @if(!$loop->last)
+                            <div class='separator separator-dashed my-5'></div>
+                            @endif
                             @endforeach
                             <!--end::Roles-->
                         </div>

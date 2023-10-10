@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Patient;
+use App\Models\Procedure;
 use App\Models\User;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
@@ -59,4 +60,10 @@ Breadcrumbs::for('patients.index', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('patients.show', function (BreadcrumbTrail $trail, Patient $patient) {
     $trail->parent('patients.index');
     $trail->push(ucwords($patient->name), route('patients.show', $patient));
+});
+
+// Dashboard > Procedures > [Procedure]
+Breadcrumbs::for('procedures.show', function (BreadcrumbTrail $trail, Procedure $procedure) {
+    $trail->parent('procedures.index');
+    $trail->push(ucwords($procedure->name), route('procedures.show', $procedure));
 });
