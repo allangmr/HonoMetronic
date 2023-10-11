@@ -42,11 +42,8 @@ class AddUserModal extends Component
         $roles = Role::all();
 
         $roles_description = [
-            'administrator' => 'Best for business owners and company administrators',
-            'developer' => 'Best for developers or people primarily using the API',
-            'analyst' => 'Best for people who need full access to analytics data, but don\'t need to update business settings',
-            'support' => 'Best for employees who regularly refund payments and respond to disputes',
-            'trial' => 'Best for people who need to preview content data, but don\'t need to make any updates',
+            'administrador' => 'Mejor rol para los administradores del sistema.',
+            'editor' => 'Mejor rol para quienes pueden agregar, editar y eliminar informacion del sistema. No es posible crear usuarios.',
         ];
 
         foreach ($roles as $i => $role) {
