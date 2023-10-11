@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Livewire\Procedure;
+namespace App\Http\Livewire\Doctor;
 
-use App\Models\Procedure;
+use App\Models\Doctor;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 
-class AddProcedureModal extends Component
+class AddDoctorModal extends Component
 {
 
     public $name;
-    public $code;
+    public $specialty;
     public $details;
     public $status = 'Activo';
 
@@ -22,21 +22,21 @@ class AddProcedureModal extends Component
 
     protected $rules = [
         'name' => 'required|string',
-        'code' => 'string',
+        'specialty' => 'string',
         'details' => 'string',
         'status' => 'string',
     ];
 
     protected $listeners = [
-        'delete_procedure' => 'deleteProcedure',
-        'create_procedure' => 'createProcedure',
-        'update_procedure' => 'updateProcedure',
-        'view_procedure' => 'viewProcedure',
+        'delete_doctor' => 'deleteDoctor',
+        'create_doctor' => 'createDoctor',
+        'update_doctor' => 'updateDoctor',
+        'view_doctor' => 'viewDoctor',
     ];
 
     public function render()
     {
-        return view('livewire.procedures.add-procedure-modal');
+        return view('livewire.doctors.add-doctor-modal');
     }
 
 
@@ -49,79 +49,79 @@ class AddProcedureModal extends Component
         DB::transaction(function () {
             // Prepare the data for creating a new patient
             $data = [
-                'name' => $this->name,
+                'specialty' => $this->specialty,
                 'details' => $this->details,
                 'status' => $this->status,
             ];
 
 
-            $existingProcedure = Procedure::where('code', $this->code)->first();
-            if ($existingProcedure) {
-                $existingProcedure->update($data);
+            $existingDoctor = Doctor::where('name', $this->name)->first();
+            if ($existingDoctor) {
+                $existingDoctor->update($data);
                 // Handle the case where a patient with the same dni already exists
                 // You might want to show an error message or take a different action
             } else {
                 // Continue with updateOrCreate logic
-                $procedure = Procedure::updateOrCreate([
-                    'code' => $this->code
+                $doctor = Doctor::updateOrCreate([
+                    'name' => $this->name
                 ], $data);
             }
 
             if ($this->edit_mode) {
                 // Emit a success event with a message
-                $this->emit('success', __('Procedimiento Actualizado'));
+                $this->emit('success', __('Doctor Actualizado'));
             } else {
                 // Emit a success event with a message
-                $this->emit('success', __('Procedimiento Agregado de forma correcta'));
+                $this->emit('success', __('Doctor Agregado de forma correcta'));
             }
         });
 
         // Reset the form fields after successful submission
         $this->reset();
     }
-    public function createProcedure()
+    public function createDoctor()
     {
         $this->reset();
-        $this->pageTitle =  __('Agregar Procedimiento');
+        $this->pageTitle =  __('Agregar Doctor');
         $this->submitButtonTitle =  __('Agregar');
         $this->edit_mode = false;
     }
 
-    public function deleteProcedure($id)
+    public function deleteDoctor($id)
     {
 
         // Delete the user record with the specified ID
-        Procedure::destroy($id);
+        Doctor::destroy($id);
 
         // Emit a success event with a message
-        $this->emit('success', 'Procedimiento Eliminado Correctamente');
+        $this->emit('success', 'Doctor Eliminado Correctamente');
     }
 
-    public function updateProcedure($id)
+    public function updateDoctor($id)
     {
         $this->edit_mode = true;
-        $this->pageTitle =  __('Editar Procedimiento');
+        $this->pageTitle =  __('Editar Doctor');
         $this->submitButtonTitle =  __('Editar');
 
-        $procedure = Procedure::find($id);
+        $doctor = Doctor::find($id);
 
-        $this->name = $procedure->name;
-        $this->code = $procedure->code;
-        $this->details = $procedure->details;
-        $this->status = $procedure->status;
+        $this->name = $doctor->name;
+        $this->specialty = $doctor->specialty;
+        $this->details = $doctor->details;
+        $this->status = $doctor->status;
     }
 
-    public function viewProcedure($id)
+    public function viewDoctor($id)
     {
-        $this->pageTitle =  __('Detalles del Procedimiento');
+        $this->pageTitle =  __('Detalles del Doctor');
         $this->submitButtonTitle =  __('');
 
-        $procedure = Procedure::find($id);
+        $doctor = Doctor::find($id);
 
-        $this->name = $procedure->name;
-        $this->code = $procedure->code;
-        $this->details = $procedure->details;
-        $this->status = $procedure->status;
+        $this->name = $doctor->name;
+        $this->specialty = $doctor->specialty;
+        $this->details = $doctor->details;
+        $this->status = $doctor->status;
     }
 
     public function hydrate()
