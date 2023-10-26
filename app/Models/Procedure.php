@@ -13,6 +13,13 @@ class Procedure extends Model
         'name',
         'code',
         'details',
+        'procedure_start_date',
+        'procedure_end_date',
         'status'
     ];
+
+    public function claims()
+    {
+        return $this->hasMany(Claim::class, 'id_procedure');
+    }
 }

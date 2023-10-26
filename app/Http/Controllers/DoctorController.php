@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
-    //
     public function index(DoctorsDataTable $dataTable)
     {
         // $patients = Patient::all(); // Change Paciente to Patient

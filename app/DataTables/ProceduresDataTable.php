@@ -23,6 +23,12 @@ class ProceduresDataTable extends DataTable
             ->editColumn('code', function (Procedure $procedure) {
                 return $procedure->code;
             })
+            ->editColumn('procedure_start_date', function (Procedure $procedure) {
+                return $procedure->procedure_start_date;
+            })
+            ->editColumn('procedure_end_date', function (Procedure $procedure) {
+                return $procedure->procedure_end_date;
+            })
             ->editColumn('details', function (Procedure $procedure) {
                 return $procedure->details;
             })
@@ -67,9 +73,11 @@ class ProceduresDataTable extends DataTable
     {
         return [
             Column::make('name')->title('Nombre')->width(60),
-            Column::make('code')->title('Codigo')->width(60),
+            Column::make('code')->title('Codigo')->width(30),
+            Column::make('procedure_start_date')->title('Fec. Entrada')->width(30),
+            Column::make('procedure_end_date')->title('Fec. Salida')->width(30),
             Column::make('details')->title('Detalles')->width(60),
-            Column::make('status')->title('Estado')->width(60),
+            Column::make('status')->title('Estado')->width(30),
             Column::computed('action')
                 ->addClass('text-end text-nowrap')
                 ->exportable(false)

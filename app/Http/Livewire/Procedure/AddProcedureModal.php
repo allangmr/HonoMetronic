@@ -12,6 +12,8 @@ class AddProcedureModal extends Component
     public $name;
     public $code;
     public $details;
+    public $procedure_start_date;
+    public $procedure_end_date;
     public $status = 'Activo';
 
     public $edit_mode = false;
@@ -23,6 +25,8 @@ class AddProcedureModal extends Component
     protected $rules = [
         'name' => 'required|string',
         'code' => 'string',
+        'procedure_start_date' => 'string',
+        'procedure_end_date' => 'string',
         'details' => 'string',
         'status' => 'string',
     ];
@@ -45,11 +49,12 @@ class AddProcedureModal extends Component
     {
         // Validate the form input data
         $this->validate();
-
         DB::transaction(function () {
             // Prepare the data for creating a new patient
             $data = [
                 'name' => $this->name,
+                'procedure_start_date' => $this->procedure_start_date,
+                'procedure_end_date' => $this->procedure_end_date,
                 'details' => $this->details,
                 'status' => $this->status,
             ];
@@ -107,6 +112,8 @@ class AddProcedureModal extends Component
 
         $this->name = $procedure->name;
         $this->code = $procedure->code;
+        $this->procedure_start_date = $procedure->procedure_start_date;
+        $this->procedure_end_date = $procedure->procedure_end_date;
         $this->details = $procedure->details;
         $this->status = $procedure->status;
     }
@@ -120,6 +127,8 @@ class AddProcedureModal extends Component
 
         $this->name = $procedure->name;
         $this->code = $procedure->code;
+        $this->procedure_start_date = $procedure->procedure_start_date;
+        $this->procedure_end_date = $procedure->procedure_end_date;
         $this->details = $procedure->details;
         $this->status = $procedure->status;
     }
