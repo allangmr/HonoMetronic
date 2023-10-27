@@ -21,4 +21,10 @@ class Patient extends Model
         'phone',
         'address',
     ];
+    
+    public function claims()
+    {
+        return $this->hasMany(Claim::class, 'id_patient');
+    }
+
 }

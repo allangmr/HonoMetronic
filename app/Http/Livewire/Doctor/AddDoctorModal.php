@@ -22,8 +22,8 @@ class AddDoctorModal extends Component
 
     protected $rules = [
         'name' => 'required|string',
-        'specialty' => 'string',
-        'details' => 'string',
+        'specialty' => 'nullable|string',
+        'details' => 'nullable|string',
         'status' => 'string',
     ];
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Patient;
+use App\Models\Claim;
 use App\Models\Procedure;
 use App\Models\User;
 use Diglactic\Breadcrumbs\Breadcrumbs;
@@ -54,4 +55,16 @@ Breadcrumbs::for('patients.index', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('patients.show', function (BreadcrumbTrail $trail, Patient $patient) {
     $trail->parent('patients.index');
     $trail->push(ucwords($patient->name), route('patients.show', $patient));
+});
+
+// Dashboard > Patients
+Breadcrumbs::for('claims.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Reclamos', route('claims.index'));
+});
+
+// Dashboard > Patients > [Patient]
+Breadcrumbs::for('claims.show', function (BreadcrumbTrail $trail, Claim $claim) {
+    $trail->parent('claims.index');
+    $trail->push(ucwords($claim->name), route('claims.show', $claim));
 });

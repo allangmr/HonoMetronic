@@ -40,7 +40,7 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Especialidades</label>
+                            <label class="fw-semibold fs-6 mb-2">Especialidades</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             @if($submitButtonTitle === '' )
@@ -56,7 +56,7 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Detalles</label>
+                            <label class="fw-semibold fs-6 mb-2">Detalles</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             @if($submitButtonTitle === '' )

@@ -24,10 +24,10 @@ class AddProcedureModal extends Component
 
     protected $rules = [
         'name' => 'required|string',
-        'code' => 'string',
-        'procedure_start_date' => 'string',
-        'procedure_end_date' => 'string',
-        'details' => 'string',
+        'code' => 'required|string',
+        'procedure_start_date' => 'nullable|string',
+        'procedure_end_date' => 'nullable|string',
+        'details' => 'nullable|string',
         'status' => 'string',
     ];
 

@@ -26,13 +26,13 @@ class AddPatientModal extends Component
 
     protected $rules = [
         'name' => 'required|string',
-        'dni' => 'string',
-        'age' => 'numeric',
-        'born_date' => 'date',
-        'insurance_companies' => 'string',
-        'email' => 'email',
-        'phone' => 'string',
-        'address' => 'string'
+        'dni' => 'required|string',
+        'age' => 'nullable|numeric',
+        'born_date' => 'nullable|date',
+        'insurance_companies' => 'nullable|string',
+        'email' => 'nullable|email',
+        'phone' => 'nullable|string',
+        'address' => 'nullable|string'
     ];
 
     protected $listeners = [

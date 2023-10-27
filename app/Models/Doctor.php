@@ -15,4 +15,9 @@ class Doctor extends Model
         'details',
         'status'
     ];
+
+    public function claims()
+    {
+        return $this->hasMany(Claim::class, 'id_doctor');
+    }
 }

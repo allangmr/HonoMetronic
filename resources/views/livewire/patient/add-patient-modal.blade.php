@@ -52,7 +52,7 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Edad</label>
+                            <label class="fw-semibold fs-6 mb-2">Edad</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="number" wire:model.defer="age" name="age" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Edad" />
@@ -64,7 +64,7 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Fecha de Nacimiento</label>
+                            <label class="fw-semibold fs-6 mb-2">Fecha de Nacimiento</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="date" wire:model.defer="born_date" name="born_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Fecha de Nacimiento" />
@@ -76,7 +76,7 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Aseguradora</label>
+                            <label class="fw-semibold fs-6 mb-2">Aseguradora</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="text" wire:model.defer="insurance_companies" name="insurance_companies" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Aseguradora" />
@@ -88,7 +88,7 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Correo</label>
+                            <label class="fw-semibold fs-6 mb-2">Correo</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="email" wire:model.defer="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="correo@correo.com" />
@@ -100,7 +100,7 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Telefono</label>
+                            <label class="fw-semibold fs-6 mb-2">Telefono</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="text" wire:model.defer="phone" name="phone" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Telefono" />
@@ -112,7 +112,7 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Direccion</label>
+                            <label class="fw-semibold fs-6 mb-2">Direccion</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="text" wire:model.defer="address" name="address" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Direccion" />
