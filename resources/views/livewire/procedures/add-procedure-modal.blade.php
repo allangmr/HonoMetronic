@@ -72,38 +72,6 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="fw-semibold fs-6 mb-2">Fecha de Entrada Hospital</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            @if($submitButtonTitle === '' )
-                            <input type="date" wire:model.defer="procedure_start_date" name="procedure_start_date" class="form-control form-control-solid mb-3 mb-lg-0" disabled />
-                            @else
-                            <input type="date" wire:model.defer="procedure_start_date" name="procedure_start_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Fecha de Entrada Hospital" />
-                            @endif
-                            <!--end::Input-->
-                            @error('procedure_start_date')
-                            <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <div class="fv-row mb-7">
-                            <!--begin::Label-->
-                            <label class="fw-semibold fs-6 mb-2">Fecha de Salida Hospital</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            @if($submitButtonTitle === '' )
-                            <input type="date" wire:model.defer="procedure_end_date" name="procedure_end_date" class="form-control form-control-solid mb-3 mb-lg-0" disabled />
-                            @else
-                            <input type="date" wire:model.defer="procedure_end_date" name="procedure_end_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Fecha de Salida Hospital" />
-                            @endif
-                            <!--end::Input-->
-                            @error('procedure_end_date')
-                            <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <div class="fv-row mb-7">
-                            <!--begin::Label-->
                             <label class="required fw-semibold fs-6 mb-2">Estado</label>
                             <!--end::Label-->
                             <!--begin::Input-->

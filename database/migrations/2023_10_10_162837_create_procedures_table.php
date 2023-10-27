@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('code')->unique();
-            $table->date('procedure_start_date')->nullable();
-            $table->date('procedure_end_date')->nullable();
             $table->string('details')->nullable();
             $table->string('status');
             $table->timestamps();
