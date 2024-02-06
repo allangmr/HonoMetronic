@@ -8,7 +8,7 @@ use App\Models\Patient;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 
-class AddClaimModal extends Component
+class AddClaimProcedureModal extends Component
 {
 
     public $claim_id;
@@ -37,17 +37,17 @@ class AddClaimModal extends Component
     ];
 
     protected $listeners = [
-        'delete_claim' => 'deleteClaim',
-        'create_claim' => 'createClaim',
-        'update_claim' => 'updateClaim',
-        'view_claim' => 'viewClaim',
+        'delete_claim_procedure' => 'deleteClaimProcedure',
+        'create_claim_procedure' => 'createClaimProcedure',
+        'update_claim_procedure' => 'updateClaimProcedure',
+        'view_claim-procedure' => 'viewClaimProcedure',
     ];
 
     public function render()
     {
         $doctors = Doctor::all();
         $patients = Patient::all();
-        return view('livewire.claims.add-claim-modal', ['doctors' => $doctors, 'patients' => $patients ]);
+        return view('livewire.claims.add-claim-procedure-modal', ['doctors' => $doctors, 'patients' => $patients ]);
     }
 
 
@@ -94,38 +94,39 @@ class AddClaimModal extends Component
 
             if ($this->edit_mode) {
                 // Emit a success event with a message
-                $this->emit('success', __('Reclamo Actualizado'));
+                $this->emit('success', __('Procedimiento Actualizado'));
             } else {
                 // Emit a success event with a message
-                $this->emit('success', __('Reclamo Agregado de forma correcta'));
+                $this->emit('success', __('Procedimiento Agregado de forma correcta'));
             }
         });
 
         // Reset the form fields after successful submission
         $this->reset();
     }
-    public function createClaim()
+    public function createClaimProcedure()
     {
+
         $this->reset();
-        $this->pageTitle =  __('Agregar Reclamo');
+        $this->pageTitle =  __('Agregar Procedimiento');
         $this->submitButtonTitle =  __('Agregar');
         $this->edit_mode = false;
     }
 
-    public function deleteClaim($id)
+    public function deleteClaimProcedure($id)
     {
 
         // Delete the user record with the specified ID
         Claim::destroy($id);
 
         // Emit a success event with a message
-        $this->emit('success', 'Reclamo Eliminado Correctamente');
+        $this->emit('success', 'Procedimiento Eliminado Correctamente');
     }
 
-    public function updateClaim($id)
+    public function updateClaimProcedure($id)
     {
         $this->edit_mode = true;
-        $this->pageTitle =  __('Editar Reclamo');
+        $this->pageTitle =  __('Editar Procedimiento');
         $this->submitButtonTitle =  __('Editar');
 
         $claim = Claim::find($id);
@@ -139,9 +140,10 @@ class AddClaimModal extends Component
         $this->status = $claim->status;
     }
 
-    public function viewClaim($id)
+    public function viewClaimProcedure($id)
     {
-        $this->pageTitle =  __('Detalles del Reclamo');
+        dd("view");
+        $this->pageTitle =  __('Detalles del Procedimiento');
         $this->submitButtonTitle =  __('');
 
         $claim = Claim::find($id);

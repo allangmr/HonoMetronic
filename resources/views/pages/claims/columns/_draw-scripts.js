@@ -61,6 +61,17 @@ document
         });
     });
 
+
+// Add click event listener to update buttons
+document
+.querySelectorAll('[data-kt-action="create_claim_procedure_row"]')
+.forEach(function (element) {
+    element.addEventListener("click", function () {
+        Livewire.emit("create_claim_procedure");
+    });
+});
+
+
 // Listen for 'success' event emitted by Livewire
 Livewire.on("success", (message) => {
     // Reload the patients-table datatable

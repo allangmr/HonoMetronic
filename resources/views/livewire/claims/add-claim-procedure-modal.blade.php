@@ -1,4 +1,4 @@
-<div class="modal fade" id="kt_modal_add_claim" tabindex="-1" aria-hidden="true" wire:ignore.self>
+<div class="modal fade" id="kt_modal_add_claim_procedure" tabindex="-1" aria-hidden="true" wire:ignore.self>
     <!--begin::Modal dialog-->
     <div class="modal-dialog modal-dialog-centered mw-650px">
         <!--begin::Modal content-->
@@ -24,7 +24,7 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Código de Reclamo</label>
+                            <label class="required fw-semibold fs-6 mb-2">CPT</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             @if($submitButtonTitle === '' )
@@ -40,39 +40,7 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Fecha de Inicio</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            @if($submitButtonTitle === '' )
-                            <input type="date" wire:model.defer="claim_submission_date" name="claim_submission_date" class="form-control form-control-solid mb-3 mb-lg-0" disabled />
-                            @else
-                            <input type="date" wire:model.defer="claim_submission_date" name="claim_submission_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Fecha de Inicio Reclamo" />
-                            @endif
-                            <!--end::Input-->
-                            @error('claim_submission_date')
-                            <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <div class="fv-row mb-7">
-                            <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Fecha de Fin</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            @if($submitButtonTitle === '' )
-                            <input type="date" wire:model.defer="claim_resolution_date" name="claim_resolution_date" class="form-control form-control-solid mb-3 mb-lg-0" disabled />
-                            @else
-                            <input type="date" wire:model.defer="claim_resolution_date" name="claim_resolution_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Fecha de Fin Reclamo" />
-                            @endif
-                            <!--end::Input-->
-                            @error('claim_resolution_date')
-                            <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <div class="fv-row mb-7">
-                            <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Seleccione un Paciente</label>
+                            <label class="required fw-semibold fs-6 mb-2">Seleccione un Procedimiento</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             @if($submitButtonTitle === '' )
@@ -93,28 +61,39 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Seleccione un Doctor</label>
+                            <label class="required fw-semibold fs-6 mb-2">Fecha Inicio Proc.</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             @if($submitButtonTitle === '' )
-                            <input type="text" wire:model.defer="selectedDoctor" name="selectedDoctor" class="form-control form-control-solid mb-3 mb-lg-0" disabled />
+                            <input type="date" wire:model.defer="claim_submission_date" name="claim_submission_date" class="form-control form-control-solid mb-3 mb-lg-0" disabled />
                             @else
-                            <select class="form-select form-select-solid mb-3 mb-lg-0" wire:model="selectedDoctor" id="selectedDoctor" name="selectedDoctor">
-                                <option value="">Seleccione un doctor</option>
-                                @foreach ($doctors as $doctor)
-                                    <option value="{{ $doctor->id }}" {{ $selectedDoctor === $doctor->id ? 'selected' : '' }}>{{ $doctor->name }} | {{ $doctor->specialty }}</option>
-                                @endforeach
-                            </select>
+                            <input type="date" wire:model.defer="claim_submission_date" name="claim_submission_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Fecha de Inicio Reclamo" />
                             @endif
                             <!--end::Input-->
-                            @error('code')
+                            @error('claim_submission_date')
                             <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <!--begin::Label-->
-                            <label class="required fw-semibold fs-6 mb-2">Detalles</label>
+                            <label class="fw-semibold fs-6 mb-2">Fecha Fin Proc.</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            @if($submitButtonTitle === '' )
+                            <input type="date" wire:model.defer="claim_resolution_date" name="claim_resolution_date" class="form-control form-control-solid mb-3 mb-lg-0" disabled />
+                            @else
+                            <input type="date" wire:model.defer="claim_resolution_date" name="claim_resolution_date" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Fecha de Fin Reclamo" />
+                            @endif
+                            <!--end::Input-->
+                            @error('claim_resolution_date')
+                            <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="fv-row mb-7">
+                            <!--begin::Label-->
+                            <label class="required fw-semibold fs-6 mb-2">Observacion</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             @if($submitButtonTitle === '' )

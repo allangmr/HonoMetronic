@@ -22,20 +22,17 @@ class ClaimsDataTable extends DataTable
 
         return (new EloquentDataTable($query))
             ->rawColumns(['claim'])
-            ->editColumn('name', function (Claim $claim) {
-                return $claim->patient->name;
-            })
-            ->editColumn('claim_submission_date', function (Claim $claim) {
-                return $claim->details;
-            })
-            ->editColumn('claim_resolution_date', function (Claim $claim) {
-                return $claim->details;
-            })
             ->editColumn('id_patient', function (Claim $claim) {
                 return $claim->patient->name;
             })
-            ->editColumn('id_procedure', function (Claim $claim) {
-                return $claim->procedure->name;
+            ->editColumn('claim_id', function (Claim $claim) {
+                return $claim->claim_id;
+            })
+            ->editColumn('claim_submission_date', function (Claim $claim) {
+                return $claim->claim_submission_date ? \Carbon\Carbon::parse($claim->claim_submission_date)->format('d-m-Y') : '';
+            })
+            ->editColumn('claim_resolution_date', function (Claim $claim) {
+                return $claim->claim_resolution_date ? \Carbon\Carbon::parse($claim->claim_resolution_date)->format('d-m-Y') : '';
             })
             ->editColumn('status', function (Claim $claim) {
                 return $claim->status;
@@ -54,6 +51,7 @@ class ClaimsDataTable extends DataTable
     {
         return $model->newQuery();
     }
+    
 
     /**
      * Optional method if you want to use the html builder.
@@ -77,11 +75,10 @@ class ClaimsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('name')->title('Reclamo')->width(30),
+            Column::make('id_patient')->title('Paciente')->width(60)->searchable(true),
+            Column::make('claim_id')->title('Reclamo')->width(30),
             Column::make('claim_submission_date')->title('Apertura')->width(30),
             Column::make('claim_resolution_date')->title('Cierre')->width(30),
-            Column::make('id_patient')->title('Paciente')->width(60),
-            Column::make('id_procedure')->title('Procedimiento')->width(60),
             Column::make('status')->title('Estado')->width(60),
             Column::computed('action')
                 ->addClass('text-end text-nowrap')

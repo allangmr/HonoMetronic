@@ -54,7 +54,7 @@
     @push('scripts')
     {{ $dataTable->scripts() }}
     <script>
-        document.getElementById('mySearchInputPatient').addEventListener('keyup', function() {
+        document.getElementById('mySearchInputClaim').addEventListener('keyup', function() {
             window.LaravelDataTables['claims-table'].search(this.value).draw();
         });
         document.addEventListener('livewire:load', function() {

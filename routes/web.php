@@ -31,11 +31,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Use resourceful controller for patients
     Route::resource('/patients', PatientController::class);
 
-    Route::resource('procedures', ProcedureController::class);
+    Route::resource('/procedures', ProcedureController::class);
 
-    Route::resource('doctors', DoctorController::class);
+    Route::resource('/doctors', DoctorController::class);
 
-    Route::resource('claims', ClaimController::class);
+    Route::resource('/claims', ClaimController::class);
 
     Route::name('user-management.')->group(function () {
         Route::resource('/user-management/users', UserManagementController::class);

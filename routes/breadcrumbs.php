@@ -66,5 +66,5 @@ Breadcrumbs::for('claims.index', function (BreadcrumbTrail $trail) {
 // Dashboard > Patients > [Patient]
 Breadcrumbs::for('claims.show', function (BreadcrumbTrail $trail, Claim $claim) {
     $trail->parent('claims.index');
-    $trail->push(ucwords($claim->name), route('claims.show', $claim));
+    $trail->push(ucwords($claim->claim_id), route('claims.show', $claim));
 });
