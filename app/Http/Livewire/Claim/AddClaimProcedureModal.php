@@ -142,7 +142,6 @@ class AddClaimProcedureModal extends Component
 
     public function viewClaimProcedure($id)
     {
-        dd("view");
         $this->pageTitle =  __('Detalles del Procedimiento');
         $this->submitButtonTitle =  __('');
 
